@@ -29,5 +29,12 @@ namespace Backup_Maker_GUI
             showdata showdata = new showdata();
             showdata.ShowDialog();
         }
+
+        private void start_backup_Click(object sender, EventArgs e)
+        {
+            Copy copy = new Copy(listBox1);
+            copy.Start();
+            MessageBox.Show("Done!");
+        }
     }
 }
