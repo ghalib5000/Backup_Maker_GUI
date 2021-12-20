@@ -19,55 +19,72 @@ namespace Backup_Maker_GUI
         }
         private void back_btn_Click(object sender, EventArgs e)
         {
-
-            Form1 form1 = new Form1();
-            form1.Show(this);
             this.Close();
         }
 
         private void adddata_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void add_folder_Click(object sender, EventArgs e)
         {
-            if( source_folder.Text=="" && dest_folder.Text=="")
+            if( source_location.Text=="" && dest_location.Text=="")
             {
                 hidden.Text = "please enter source and destination locaitions";
             }
             else
             {
                 SQL sql = new SQL();
-                sql.Add_To_Database(source_folder.Text,dest_folder.Text);
+                bool check = sql.check_if_entry_exist(source_location.Text,dest_location.Text);
+                if (!check)
+                {
+                    sql.Add_To_Database(source_location.Text, dest_location.Text);
+                }
+                else
+                {
+                    MessageBox.Show("The same entries are alredy added to the DB");
+                }
             }
         }
 
-        private void dest_folder_DoubleClick(object sender, EventArgs e)
-        { 
-            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
-            folderDlg.ShowDialog();
-            try
-            {
-                dest_folder.Text = folderDlg.SelectedPath;
-            }
-            catch (Exception ex)
-            {
-                hidden.Text = ex.Message;
-            }
-        }
-
-        private void source_folder_DoubleClick(object sender, EventArgs e)
+        private void src_file_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
-            folderDlg.ShowDialog();
-            try
+            OpenFileDialog file = new OpenFileDialog();
+            if(file.ShowDialog()==DialogResult.OK)
             {
-                source_folder.Text = folderDlg.SelectedPath;
+                source_location.Text = file.FileName;
+
             }
-            catch (Exception ex)
+        }
+
+        private void src_folder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folder = new FolderBrowserDialog();
+            if(folder.ShowDialog()==DialogResult.OK)
             {
-                hidden.Text =ex.Message;
+                source_location.Text = folder.SelectedPath;
+
+            }
+        }
+
+        private void dest_file_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog();
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                dest_location.Text = file.FileName;
+
+            }
+        }
+
+        private void dest_folder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folder = new FolderBrowserDialog();
+            if (folder.ShowDialog() == DialogResult.OK)
+            {
+                dest_location.Text = folder.SelectedPath;
+
             }
         }
     }

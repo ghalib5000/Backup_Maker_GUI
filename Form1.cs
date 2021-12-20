@@ -21,15 +21,13 @@ namespace Backup_Maker_GUI
         {
 
             adddata adddata = new adddata();
-            adddata.Show(this);
-            this.Hide();
+            adddata.ShowDialog();
         }
 
         private void show_all_Click(object sender, EventArgs e)
         {
             showdata showdata = new showdata();
-            showdata.Show(this);
-            this.Hide();
+            showdata.ShowDialog();
         }
     }
 }

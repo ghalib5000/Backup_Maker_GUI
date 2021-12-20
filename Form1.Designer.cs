@@ -37,9 +37,9 @@
             // add_btn
             // 
             this.add_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.add_btn.Location = new System.Drawing.Point(713, 207);
+            this.add_btn.Location = new System.Drawing.Point(688, 396);
             this.add_btn.Name = "add_btn";
-            this.add_btn.Size = new System.Drawing.Size(173, 116);
+            this.add_btn.Size = new System.Drawing.Size(203, 116);
             this.add_btn.TabIndex = 0;
             this.add_btn.Text = "Add backup folder";
             this.add_btn.UseVisualStyleBackColor = true;
@@ -49,7 +49,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(473, 55);
+            this.label1.Location = new System.Drawing.Point(546, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 25);
             this.label1.TabIndex = 1;
@@ -58,7 +58,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(151, 89);
+            this.textBox1.Location = new System.Drawing.Point(272, 170);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(271, 30);
             this.textBox1.TabIndex = 2;
@@ -68,7 +68,7 @@
             this.show_all.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.show_all.Location = new System.Drawing.Point(404, 396);
             this.show_all.Name = "show_all";
-            this.show_all.Size = new System.Drawing.Size(173, 98);
+            this.show_all.Size = new System.Drawing.Size(206, 116);
             this.show_all.TabIndex = 3;
             this.show_all.Text = "Show all backup folders";
             this.show_all.UseVisualStyleBackColor = true;
@@ -79,8 +79,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1222, 624);
-            this.Controls.Add(this.show_all);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.show_all);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.add_btn);
             this.Name = "Form1";

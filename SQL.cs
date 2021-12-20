@@ -19,7 +19,7 @@ namespace Backup_Maker_GUI
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = query;
-            cmd.ExecuteNonQuery();
+            //cmd.ExecuteNonQuery();
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dt);
             con.Close();
@@ -32,11 +32,32 @@ namespace Backup_Maker_GUI
             Run_query(query);
             MessageBox.Show("Added folder to backup!");
         }
+        public bool check_if_entry_exist(string source,string dest)
+        {
+            string query = "SELECT * FROM Folders WHERE ([source_folder] = '" + source + "' AND [dest_folder] = '" + dest + "'  )";
+            con.Open();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = query; 
+            var UserExist = cmd.ExecuteScalar();
+            con.Close();
+            if (UserExist == null)
+            {
+                //new record
+                return false;
+            }
+            else
+            {
+                //same source desination exists
+                return true;
+            }
+        }
+
 
         public void Show_From_Database()
         {
             //TODO:add code to show from db
-            string query = "select * from Table";
+            string query = "select * from Folders";
             Run_query(query);
         }
         public DataTable get_data()
