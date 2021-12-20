@@ -31,35 +31,46 @@ namespace Backup_Maker_GUI
             {
                 source = row["source_folder"].ToString();
                 destination = row["dest_folder"].ToString();
-                CopyAll(source, destination, LogFileName, true);
+                var diSource = new DirectoryInfo(source);
+                var diTarget = new DirectoryInfo(destination);
+                if (log == null)
+                    log = new Logger(logloc, LogFileName, date.ToString());
+                CopyAll(diSource, diTarget, LogFileName, true);
+                string temp = "     Copying Finished!";
+                log.Information(temp);
+                Console.WriteLine(temp);
+                listBox1.Items.Add(temp);
             }
             return;
         }
 
-        private  void CopyAll(string source, string dest, string LogFileName, bool overwrite)
+        private  void CopyAll(DirectoryInfo source, DirectoryInfo dest, string LogFileName, bool overwrite)
         {
-            DirectoryInfo source_directory = new DirectoryInfo(source);
-            DirectoryInfo dest_directory = new DirectoryInfo(dest);
             if (!Directory.Exists(logloc))
                 Directory.CreateDirectory(logloc);
 
-            if (!Directory.Exists(dest_directory.FullName))
-                Directory.CreateDirectory(dest_directory.FullName);
-
-            if (log == null)
-                log = new Logger(logloc ,LogFileName, date.ToString());
+            if (!Directory.Exists(dest.FullName))
+                Directory.CreateDirectory(dest.FullName);
             // Copy each file into the new directory.
-            foreach (FileInfo fi in source_directory.GetFiles())
+            try
             {
-                CopyFile(dest_directory.FullName, fi, overwrite);
+                foreach (FileInfo fi in source.GetFiles())
+                {
+                    CopyFile(dest.FullName, fi, overwrite);
+                }
+
+                // Copy each subdirectory using recursion.
+                foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
+                {
+                    DirectoryInfo nextTargetSubDir = dest.CreateSubdirectory(diSourceSubDir.Name);
+                    CopyAll(diSourceSubDir, nextTargetSubDir, LogFileName, overwrite);
+                }
+            }
+            catch (Exception ex)
+            {
+                listBox1.Items.Add(ex.Message);
             }
 
-            // Copy each subdirectory using recursion.
-            foreach (DirectoryInfo diSourceSubDir in source_directory.GetDirectories())
-            {
-                DirectoryInfo nextTargetSubDir = dest_directory.CreateSubdirectory(diSourceSubDir.Name);
-                CopyAll(source_directory+"\\"+diSourceSubDir.ToString(), nextTargetSubDir.ToString(), LogFileName, overwrite);
-            }
         }
        
         private  void CopyFile(string target, FileInfo fi, bool overwrite)
@@ -89,7 +100,7 @@ namespace Backup_Maker_GUI
             }
             else
             {
-                temp = "Copying " + target + " to " + fi.Name;
+                temp = "Copying " + fi.Name + " to " + target;
                 log.Information(temp);
                 Console.WriteLine(temp);
                 listBox1.Items.Add(temp);

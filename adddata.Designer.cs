@@ -35,10 +35,8 @@
             this.dest_location = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.hidden = new System.Windows.Forms.Label();
-            this.src_file = new System.Windows.Forms.Button();
             this.src_folder = new System.Windows.Forms.Button();
             this.dest_folder = new System.Windows.Forms.Button();
-            this.dest_file = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // back_btn
@@ -110,21 +108,10 @@
             this.hidden.Size = new System.Drawing.Size(0, 25);
             this.hidden.TabIndex = 6;
             // 
-            // src_file
-            // 
-            this.src_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.src_file.Location = new System.Drawing.Point(208, 84);
-            this.src_file.Name = "src_file";
-            this.src_file.Size = new System.Drawing.Size(158, 36);
-            this.src_file.TabIndex = 7;
-            this.src_file.Text = "Browse File";
-            this.src_file.UseVisualStyleBackColor = true;
-            this.src_file.Click += new System.EventHandler(this.src_file_Click);
-            // 
             // src_folder
             // 
             this.src_folder.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.src_folder.Location = new System.Drawing.Point(387, 84);
+            this.src_folder.Location = new System.Drawing.Point(208, 86);
             this.src_folder.Name = "src_folder";
             this.src_folder.Size = new System.Drawing.Size(188, 36);
             this.src_folder.TabIndex = 8;
@@ -135,7 +122,7 @@
             // dest_folder
             // 
             this.dest_folder.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dest_folder.Location = new System.Drawing.Point(387, 204);
+            this.dest_folder.Location = new System.Drawing.Point(208, 201);
             this.dest_folder.Name = "dest_folder";
             this.dest_folder.Size = new System.Drawing.Size(188, 36);
             this.dest_folder.TabIndex = 10;
@@ -143,26 +130,13 @@
             this.dest_folder.UseVisualStyleBackColor = true;
             this.dest_folder.Click += new System.EventHandler(this.dest_folder_Click);
             // 
-            // dest_file
-            // 
-            this.dest_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dest_file.Location = new System.Drawing.Point(208, 204);
-            this.dest_file.Name = "dest_file";
-            this.dest_file.Size = new System.Drawing.Size(158, 36);
-            this.dest_file.TabIndex = 9;
-            this.dest_file.Text = "Browse File";
-            this.dest_file.UseVisualStyleBackColor = true;
-            this.dest_file.Click += new System.EventHandler(this.dest_file_Click);
-            // 
             // adddata
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1039, 332);
             this.Controls.Add(this.dest_folder);
-            this.Controls.Add(this.dest_file);
             this.Controls.Add(this.src_folder);
-            this.Controls.Add(this.src_file);
             this.Controls.Add(this.hidden);
             this.Controls.Add(this.dest_location);
             this.Controls.Add(this.label2);
@@ -187,9 +161,7 @@
         private System.Windows.Forms.TextBox dest_location;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label hidden;
-        private System.Windows.Forms.Button src_file;
         private System.Windows.Forms.Button src_folder;
         private System.Windows.Forms.Button dest_folder;
-        private System.Windows.Forms.Button dest_file;
     }
 }

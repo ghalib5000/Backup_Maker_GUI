@@ -48,32 +48,12 @@ namespace Backup_Maker_GUI
             }
         }
 
-        private void src_file_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog file = new OpenFileDialog();
-            if(file.ShowDialog()==DialogResult.OK)
-            {
-                source_location.Text = file.FileName;
-
-            }
-        }
-
         private void src_folder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folder = new FolderBrowserDialog();
             if(folder.ShowDialog()==DialogResult.OK)
             {
                 source_location.Text = folder.SelectedPath;
-
-            }
-        }
-
-        private void dest_file_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog file = new OpenFileDialog();
-            if (file.ShowDialog() == DialogResult.OK)
-            {
-                dest_location.Text = file.FileName;
 
             }
         }
