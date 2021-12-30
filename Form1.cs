@@ -34,6 +34,8 @@ namespace Backup_Maker_GUI
         {
             Copy copy = new Copy(listBox1);
             copy.Start();
+            Compress cp = new Compress();
+            cp.start();
             MessageBox.Show("Done!");
         }
     }

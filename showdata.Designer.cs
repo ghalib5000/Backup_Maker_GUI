@@ -30,12 +30,13 @@
         {
             this.back_btn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.remove_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // back_btn
             // 
-            this.back_btn.Location = new System.Drawing.Point(545, 609);
+            this.back_btn.Location = new System.Drawing.Point(990, 609);
             this.back_btn.Name = "back_btn";
             this.back_btn.Size = new System.Drawing.Size(108, 44);
             this.back_btn.TabIndex = 0;
@@ -53,11 +54,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(1158, 555);
             this.dataGridView1.TabIndex = 1;
             // 
+            // remove_btn
+            // 
+            this.remove_btn.Location = new System.Drawing.Point(139, 609);
+            this.remove_btn.Name = "remove_btn";
+            this.remove_btn.Size = new System.Drawing.Size(108, 44);
+            this.remove_btn.TabIndex = 2;
+            this.remove_btn.Text = "Remove";
+            this.remove_btn.UseVisualStyleBackColor = true;
+            this.remove_btn.Click += new System.EventHandler(this.remove_btn_Click);
+            // 
             // showdata
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1203, 665);
+            this.Controls.Add(this.remove_btn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.back_btn);
             this.Name = "showdata";
@@ -72,5 +84,6 @@
 
         private System.Windows.Forms.Button back_btn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button remove_btn;
     }
 }

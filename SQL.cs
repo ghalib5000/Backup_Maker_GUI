@@ -11,7 +11,7 @@ namespace Backup_Maker_GUI
 {
     public  class SQL
     {
-    public  SqlConnection con = new SqlConnection(@"Data Source=GHALIB-PC\SQLSERVER;Persist Security Info=True;User ID=sa;Password=123");
+        public SqlConnection con = new SqlConnection(@"Data Source=GHALIB-PC\SQLSERVER;Persist Security Info=True;User ID=sa;Password=123");
         public  DataTable dt = new DataTable();
     private void Run_query(string query)
         {
@@ -25,9 +25,14 @@ namespace Backup_Maker_GUI
             con.Close();
         }
 
-        public void Add_To_Database(string from, string to)
+        public void Delete_entry(string id)
         {
-            //TODO:add code to add items to db
+            string query = @"DELETE FROM Folders WHERE ([Id] = '" + id + "'  )";
+            Run_query(query);
+            MessageBox.Show("Deleted Entry!");
+        }
+            public void Add_To_Database(string from, string to)
+        {
             string query = @"INSERT INTO Folders VALUES('" + from + "','" + to + "')";
             Run_query(query);
             MessageBox.Show("Added folder to backup!");

@@ -12,9 +12,12 @@ namespace Backup_Maker_GUI
 {
     public partial class showdata : Form
     {
+        SQL sql;
         public showdata()
         {
             InitializeComponent();
+
+             sql = new SQL();
         }
 
         private void back_btn_Click(object sender, EventArgs e)
@@ -24,9 +27,32 @@ namespace Backup_Maker_GUI
 
         private void showdata_Load(object sender, EventArgs e)
         {
-            SQL sql = new SQL();
+            load_data();
+        }
+
+        private void remove_btn_Click(object sender, EventArgs e)
+        {
+            var id = dataGridView1.CurrentCell.Value;
+            int output;
+            bool check_if_number = int.TryParse(id.ToString(),out output);
+            if (check_if_number)
+            {
+                sql.Delete_entry(output.ToString());
+                load_data();
+            }
+            else
+            {
+                MessageBox.Show("Please select an id to remove!!!");
+            }
+        }
+        private void load_data()
+        {
+
             sql.Show_From_Database();
+            dataGridView1.DataSource = null; 
+            dataGridView1.Rows.Clear();
             dataGridView1.DataSource = sql.get_data();
         }
+
     }
 }

@@ -13,6 +13,7 @@ namespace Backup_Maker_GUI
     internal class Copy
     {
         static Logger log;
+        
         static string logloc =Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\GUI Backup Maker";
         static DateTime date = DateTime.Now;
         string source, destination, LogFileName="output.txt";
