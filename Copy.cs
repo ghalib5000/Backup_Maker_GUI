@@ -16,7 +16,7 @@ namespace Backup_Maker_GUI
         
         static string logloc =Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\GUI Backup Maker";
         static DateTime date = DateTime.Now;
-        string source, destination, LogFileName="output.txt";
+        string source, destination, LogFileName="log.txt";
         ListBox listBox1;
         public Copy(ListBox listBox1)
         {
@@ -37,6 +37,9 @@ namespace Backup_Maker_GUI
                 if (log == null)
                     log = new Logger(logloc, LogFileName, date.ToString());
                 CopyAll(diSource, diTarget, LogFileName, true);
+                var folder_name = diSource.Name;
+                Compress cp = new Compress(folder_name);
+                cp.start();
                 string temp = "     Copying Finished!";
                 log.Information(temp);
                 Console.WriteLine(temp);

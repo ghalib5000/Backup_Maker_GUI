@@ -49,9 +49,10 @@ namespace Backup_Maker_GUI
         {
 
             sql.Show_From_Database();
-            dataGridView1.DataSource = null; 
-            dataGridView1.Rows.Clear();
+            //dataGridView1.DataSource = null;
+            //dataGridView1.Rows.Clear();
             dataGridView1.DataSource = sql.get_data();
+            //dataGridView1.Refresh();
         }
 
     }

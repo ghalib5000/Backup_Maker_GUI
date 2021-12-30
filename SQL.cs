@@ -21,6 +21,7 @@ namespace Backup_Maker_GUI
             cmd.CommandText = query;
             //cmd.ExecuteNonQuery();
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            dt.Rows.Clear();
             adapter.Fill(dt);
             con.Close();
         }
