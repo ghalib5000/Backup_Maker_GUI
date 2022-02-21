@@ -14,20 +14,16 @@ namespace Backup_Maker_GUI
     {
         Logger log;
         string source, zip_name, destination, LogFileName = "output.txt";
-        public Compress(string folder)
+        public Compress()
+        {
+        }
+        public void start(string folder, string source, string destination)
         {
             zip_name = "\\" + folder + ".zip";
-        }
-        public void start()        
-        {
             string temp = "";
             SQL sql = new SQL();
             sql.Show_From_Database();
             var data = sql.get_data();
-            foreach (DataRow row in data.Rows)
-            {
-                source = row["source_folder"].ToString();
-                destination = row["dest_folder"].ToString();
                 temp = "Creating zip fi;e...";
                 //log.Information(temp);
                 Console.WriteLine(temp);
@@ -43,9 +39,6 @@ namespace Backup_Maker_GUI
                         archive.Save(zipFile);
                     }
                 }
-
-            }
-
             temp = "Done creating zip fi;e...";
             //log.Information(temp);
             Console.WriteLine(temp);

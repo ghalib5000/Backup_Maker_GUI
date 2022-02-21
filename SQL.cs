@@ -11,7 +11,7 @@ namespace Backup_Maker_GUI
 {
     public  class SQL
     {
-        public SqlConnection con = new SqlConnection(@"Data Source=GHALIB-PC\SQLSERVER;Persist Security Info=True;User ID=sa;Password=123");
+        public SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\projects\C#\Backup_Maker_GUI\mainDB.mdf;Integrated Security=True");
         public  DataTable dt = new DataTable();
     private void Run_query(string query)
         {
@@ -28,19 +28,19 @@ namespace Backup_Maker_GUI
 
         public void Delete_entry(string id)
         {
-            string query = @"DELETE FROM Folders WHERE ([Id] = '" + id + "'  )";
+            string query = @"DELETE FROM Folder WHERE ([Id] = '" + id + "'  )";
             Run_query(query);
             MessageBox.Show("Deleted Entry!");
         }
             public void Add_To_Database(string from, string to)
         {
-            string query = @"INSERT INTO Folders VALUES('" + from + "','" + to + "')";
+            string query = @"INSERT INTO Folder VALUES('" + from + "','" + to + "')";
             Run_query(query);
             MessageBox.Show("Added folder to backup!");
         }
         public bool check_if_entry_exist(string source,string dest)
         {
-            string query = "SELECT * FROM Folders WHERE ([source_folder] = '" + source + "' AND [dest_folder] = '" + dest + "'  )";
+            string query = "SELECT * FROM Folder WHERE ([source_folder] = '" + source + "' AND [dest_folder] = '" + dest + "'  )";
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -63,7 +63,7 @@ namespace Backup_Maker_GUI
         public void Show_From_Database()
         {
             //TODO:add code to show from db
-            string query = "select * from Folders";
+            string query = "select * from Folder";
             Run_query(query);
         }
         public DataTable get_data()

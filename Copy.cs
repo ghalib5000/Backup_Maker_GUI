@@ -38,12 +38,17 @@ namespace Backup_Maker_GUI
                     log = new Logger(logloc, LogFileName, date.ToString());
                 CopyAll(diSource, diTarget, LogFileName, true);
                 var folder_name = diSource.Name;
-                Compress cp = new Compress(folder_name);
-                cp.start();
+                Compress cp = new Compress();
+                cp.start(folder_name, source, destination);
                 string temp = "     Copying Finished!";
                 log.Information(temp);
                 Console.WriteLine(temp);
                 listBox1.Items.Add(temp);
+
+                DialogResult dialogResult = MessageBox.Show( "Copied a folder, start the next one?","Success!", MessageBoxButtons.YesNo);               if (dialogResult == DialogResult.No)
+                {
+                    break;
+                }
             }
             return;
         }
@@ -68,6 +73,7 @@ namespace Backup_Maker_GUI
                 {
                     DirectoryInfo nextTargetSubDir = dest.CreateSubdirectory(diSourceSubDir.Name);
                     CopyAll(diSourceSubDir, nextTargetSubDir, LogFileName, overwrite);
+
                 }
             }
             catch (Exception ex)

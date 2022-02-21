@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[Folders] (
+    [Id]            INT           IDENTITY (1, 1) NOT NULL,
+    [source_folder] VARCHAR (MAX) NULL,
+    [dest_folder]   VARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
